@@ -1,0 +1,658 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bola Hot-Dog - Cardápio & Apresentação</title>
+    <link rel="shortcut icon" href="https://i.ibb.co/WN4kKsLm/logo.png" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #e00d0d;
+            --dark-green: #020100;
+            --accent-gold: #d4af37;
+            --light-gold: #f3e5ab;
+            --gold-gradient: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa820a 100%);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(212, 175, 55, 0.3);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            --text-light: #fdfdfd;
+            --text-muted: #d0d5dd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--dark-green);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(2, 2, 2, 0.8) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(196, 4, 4, 0.9) 0%, #070707 100%);
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Floating particles background effect */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            50% { opacity: 0.3; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        /* Header & Hero Section */
+        header {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 3rem 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: inline-block;
+            padding: 5px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid var(--glass-border);
+            border-radius: 360px;
+            box-shadow: var(--glass-shadow);
+            margin-bottom: 1.5rem;
+            animation: fadeInDown 1s ease-out;
+            max-width: 200px;
+            width: 90%;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 360px;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            background: var(--gold-gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        p.subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            z-index: 10;
+            position: relative;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #07e938 0%, #128c7e 100%);
+            color: #ffffff;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-instagram {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #fd1d1d, #fcb045);
+            color: #ffffff;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-instagram:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(193, 53, 132, 0.4);
+        }
+
+        /* Acrylic Cards Gallery Section */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--light-gold);
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--gold-gradient);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Acrylic Card Design (Glassmorphism) */
+        .acrylic-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--glass-shadow);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .acrylic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .acrylic-card:hover::before {
+            left: 100%;
+        }
+
+        .acrylic-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--accent-gold);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .acrylic-card:hover .card-img-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(250, 2, 2, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--accent-gold);
+            color: var(--light-gold);
+            padding: 5px 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+        }
+
+        .price-tag {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+
+        .order-mini-btn {
+            background: var(--gold-gradient);
+            color: var(--dark-green);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .order-mini-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+        /* Lightbox Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(3, 19, 9, 0.9);
+            backdrop-filter: blur(10px);
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            max-width: 600px;
+            width: 100%;
+            background: var(--glass-bg);
+            border: 1px solid var(--accent-gold);
+            border-radius: 20px;
+            padding: 1.5rem;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(7, 7, 7, 0.7);
+            text-align: center;
+            animation: zoomIn 0.3s ease;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: var(--accent-gold);
+            color: var(--dark-green);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg);
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(7, 7, 7, 0.95);
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+            padding: 3rem 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-socials a {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            transition: 0.3s;
+            background: var(--glass-bg);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--glass-border);
+        }
+
+        .footer-socials a:hover {
+            background: var(--accent-gold);
+            color: var(--dark-green);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .action-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 280px; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Background Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header & Brand Logo -->
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Bola Hot-Dog  Logo">
+        </div>
+        <h1>Bola Hot-Dog</h1>
+        <p class="subtitle">O melhor sabor artesanal, HotDogs irresistíveis feito com amor para você se apaixonar a cada colherada.</p>
+
+        <!-- Quick Contact Buttons -->
+        <div class="action-buttons">
+            <a href="https://wa.me/5538991083663?text=Olá!%20Vim%20pela%20página%20de%20apresentação%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp fa-lg"></i> Fazer Pedido (WhatsApp)
+            </a>
+            <a href="https://www.instagram.com/bola_hot.dog/" target="_blank" class="btn btn-instagram">
+                <i class="fab fa-instagram fa-lg"></i> Siga nos Instagram
+            </a>
+        </div>
+    </header>
+
+    <!-- Product Showcase Gallery -->
+    <main class="container">
+        <h2 class="section-title">Promoções imperdíveis do dia!</h2>
+        
+        <div class="gallery-grid">
+            
+            <!-- Card 1: Hot-DOg de frango -->
+            <div class="acrylic-card" onclick="openModal('Hot-Dog de Frango', '', 'R$ 15,00')">
+                <div class="card-img-wrapper">
+                    <img src="frango.png">
+                    <span class="card-badge">Mais Vendido</span>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 class="card-title">Hot-Dog de frango</h3>
+                        <p class="card-desc">Pão, 2 salsichas, presunto, mussarela, frango desfiado, milho verde e batat palha. Acompanha maionese, ketchup e nosso molho especial da casa.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="price-tag">pedir ➔</span>
+                        <a href="https://wa.me/5538991083663?text=Olá!%20Gostaria%20de%20encomendar%20um%20Hot-Dog%20de%20Frango." target="_blank" class="order-mini-btn" onclick="event.stopPropagation()">
+                            <i class="fas fa-shopping-bag"></i> 
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Hot-Dog duplo (frango e carne) -->
+            <div class="acrylic-card" onclick="openModal('Hot-Dog (Frango e carne)', '', 'R$ 17,00')">
+                <div class="card-img-wrapper">
+                    <img src="frangocarne.png">
+                    <span class="card-badge">Favorito</span>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 class="card-title">Hot-Dog (frango e carne)</h3>
+                        <p class="card-desc">pão, 2 salsichas, presunto, mussarela, carne moída, frabgo, purê de batata., milho verde, vinagrete e batata palaha. Acompanha maionese katchup e nosso molho especial da casa.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="price-tag">pedir ➔</span>
+                        <a href="https://wa.me/5538991083663?text=Olá!%20Gostaria%20de%20encomendar%20o%20Ho-Dog%20duplo%20de%20(frango e carne)." target="_blank" class="order-mini-btn" onclick="event.stopPropagation()">
+                            <i class="fas fa-shopping-bag"></i> 
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Hot-Dog de carne moída -->
+            <div class="acrylic-card" onclick="openModal('Hot-Dog de carne moída', '', 'R$ 17,00.')">
+                <div class="card-img-wrapper">
+                    <img src="carnemoida.png">
+                    <span class="card-badge">Artesanal</span>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 class="card-title">Hot-Dog de carne moída</h3>
+                        <p class="card-desc">pão, 2 salsichas, presunto, mussarela, carne moída, purê de batata, milho verde, vinagrete e batata palha. Acompanha maionese, katchup e nosso molho especial da casa.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="price-tag">pedir ➔</span>
+                        <a href="https://wa.me/5538991083663?text=Olá!%20Gostaria%20de%20encomendar%20o%20Hot-Dog%20de%20carne-moída." target="_blank" class="order-mini-btn" onclick="event.stopPropagation()">
+                            <i class="fas fa-shopping-bag"></i> 
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Hot-Dog de carne seca -->
+            <div class="acrylic-card" onclick="openModal('Hot-Dog de carne seca', '', 'R$ 17,99')">
+                <div class="card-img-wrapper">
+                    <img src="carneseca.png">
+                    <span class="card-badge">Especial</span>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 class="card-title">Hot-Dog de carne seca</h3>
+                        <p class="card-desc">pão, 2 salsichas, presunto, mussarela, carne seca, requeijão cremoso, milho verde, vinagrete e batata palha. Acompanha maionese, katchup e nosso molho especial da casa..</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="price-tag">pedir ➔</span>
+                        <a href="https://wa.me/5538991083663?text=Olá!%20Gostaria%20de%20encomendar%20o%20Hot-Dog%de%20carne%20seca." target="_blank" class="order-mini-btn" onclick="event.stopPropagation()">
+                            <i class="fas fa-shopping-bag"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Hot-Dog "tudo dentro" (o completo)-->
+            <div class="acrylic-card" onclick="openModal('Hot-Dog (Tudo Dentro)', '', 'R$ 20,00')">
+                <div class="card-img-wrapper">
+                    <img src="tudodentro.png">
+                    <span class="card-badge">Para Compartilhar</span>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 class="card-title">Hot-Dog "Tudo Dentro" (completo)</h3>
+                        <p class="card-desc">pão, 2 salsichas, presunto, mussarela, carne moída, frango, calabresa, crane seca, purê de batata, milho verde, vinagrete e batata palha. Acompanha maionese, katchup e nosso molho especial da casa..</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="price-tag">pedir ➔</span>
+                        <a href="https://wa.me/5538991083663?text=Olá!%20Gostaria%20de%20encomendar%20o%20Hot-Dog%20Tudo dentro." target="_blank" class="order-mini-btn" onclick="event.stopPropagation()">
+                            <i class="fas fa-shopping-bag"></i> 
+                        </a>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+    <!-- Modal Lightbox -->
+    <div class="modal" id="productModal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle" style="font-family: 'Playfair Display', serif; color: var(--light-gold); font-size: 1.5rem; margin-bottom: 0.5rem;"></h3>
+            <p id="modalDesc" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;"></p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span id="modalPrice" style="font-size: 1.3rem; font-weight: bold; color: var(--accent-gold);"></span>
+                <a id="modalWhatsappBtn" href="#" target="_blank" class="btn btn-whatsapp" style="padding: 10px 20px; font-size: 0.9rem;">
+                    <i class="fab fa-whatsapp"></i> Pedir pelo WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Bola HOT DOG. Todos os direitos reservados.</p>
+        <p>Feito com dedicação e sabor para você.</p>
+        <div class="footer-socials">
+            <a href="https://wa.me/5538991083663" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/bola_hot.dog/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>.</p>
+        <h5>Developed by: 
+  <a href="https://www.instagram.com/arthurcardoso_08_/" target="_blank" title="Instagram">
+    <i class="fab fa-instagram"></i> arthurcardoso_08_
+  </a>
+</h5>
+    </footer>
+
+    <!-- JavaScript for Particles and Modal -->
+    <script>
+        // Generate floating particles
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 25;
+        for (let i = 0; i < particleCount; i++) {
+            const p = document.createElement('div');
+            p.classList.add('particle');
+            const size = Math.random() * 6 + 2;
+            p.style.width = `${size}px`;
+            p.style.height = `${size}px`;
+            p.style.left = `${Math.random() * 100}vw`;
+            p.style.animationDuration = `${Math.random() * 10 + 10}s`;
+            p.style.animationDelay = `${Math.random() * 5}s`;
+            particlesContainer.appendChild(p);
+        }
+
+        // Modal functions
+        function openModal(title, desc, price) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalPrice').innerText = price;
+            
+            const encodedMsg = encodeURIComponent(`Olá! Gostaria de encomendar: ${title} (${price}).`);
+            document.getElementById('modalWhatsappBtn').href = `https://wa.me/5538991083663?text=${encodedMsg}`;
+            
+            document.getElementById('productModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
